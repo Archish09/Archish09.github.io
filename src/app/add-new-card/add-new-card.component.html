@@ -1,0 +1,39 @@
+<div class="custom-dialog" style="width: 480px;">
+    <h2 mat-dialog-title>Add New Card</h2>
+    <mat-dialog-content>
+        <form [formGroup]="addCardForm" autocomplete="off">
+            <mat-form-field appearance="standard" class="cardNum">
+                <mat-label>Enter Debit / Credit Card Number</mat-label>
+                <input matInput type="text" id="card-number" name="cardNum" formControlName="cardNumber" [(ngModel)]="cardNumber"
+            [maxlength]="maxLength" (keyup)="validate()" [imask]="imask" [unmask]="true"/>
+               <img class="icon-card" *ngIf="validationRes?.card" [src]="getIssuerIcon()">
+                <input type="hidden" formControlName="iconCard" [value]="iconName">
+            </mat-form-field>
+            <p *ngIf="errorInvalidNum" class="valMssg errorNum">Invalid Card Number</p>
+            <p *ngIf="successValidNum" class="valMssg successNum">Valid Card Number</p>
+            <div class="card-fields">
+            <mat-form-field appearance="standard">
+                <mat-label>Expiry Month</mat-label>
+                <mat-select name="exp-month" formControlName="expiryMonth" placeholder="MM">
+                  <mat-option *ngFor="let month of monthList" [value]="month">{{month}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="standard">
+                <mat-label>Expiry Year</mat-label>
+                <mat-select name="exp-year" formControlName="expiryYear" placeholder="YY">
+                  <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="standard">
+                <mat-label>CVV</mat-label>
+                <input matInput type="password" id="cvv" name="cVV" formControlName="CVV" [minlength]="maxCvvLength" maxlength="4" (keypress)="numberOnly($event)"/>
+              </mat-form-field>
+            </div>
+            <button mat-raised-button type="submit" color="primary" [disabled]="!addCardForm.valid || inValidCard" (click)="onAddCard()">Add Card</button>
+        </form>
+        <p *ngIf="showValidationMssg" style="color: red; font-size: 14px; margin-bottom: 0px;">{{validationMessage}}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+  <button mat-stroked-button color="primary"class="cancel-dialog" mat-dialog-close><span>X</span></button>
+     </mat-dialog-actions>
+</div>

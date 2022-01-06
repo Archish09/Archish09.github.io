@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>My Wallet</h2>
+    <div class="card-wrapper">
+        <mat-card class="example-card" *ngIf="showCard1">
+            <mat-card-title-group>
+                <mat-card-subtitle>Debit Card Number</mat-card-subtitle>
+                <mat-card-title>{{cardNumberOne | numberMasking}}</mat-card-title>
+              <img mat-card-sm-image [src]="cardLogoOne" >
+            </mat-card-title-group>
+            <mat-card-actions>
+              <button mat-stroked-button color="primary" (click)="deleteCard('card1')">Remove</button>
+            </mat-card-actions>
+          </mat-card>
+          <mat-card class="example-card" *ngIf="showCard2">
+            <mat-card-title-group>
+                <mat-card-subtitle>Debit Card Number</mat-card-subtitle>
+                <mat-card-title>{{cardNumberTwo | numberMasking}}</mat-card-title>
+              <img mat-card-sm-image [src]="cardLogoTwo" >
+            </mat-card-title-group>
+            <mat-card-actions>
+              <button mat-stroked-button color="primary" (click)="deleteCard('card2')">Remove</button>
+            </mat-card-actions>
+          </mat-card>
+            <mat-card class="example-card" *ngFor="let card of cards, let i=index">
+              <mat-card-title-group>
+                  <mat-card-subtitle>Debit Card Number</mat-card-subtitle>
+                  <mat-card-title>{{card.cardNumber | numberMasking}}</mat-card-title>
+                <img mat-card-sm-image [src]="card.iconCard" >
+              </mat-card-title-group>
+              <mat-card-actions>
+                <button mat-stroked-button color="primary" (click)="removeCard(i)">Remove</button>
+              </mat-card-actions>
+            </mat-card>
+          <button mat-raised-button color="primary" (click)="addCard()">Add New Card</button>
+    </div>
+</div>

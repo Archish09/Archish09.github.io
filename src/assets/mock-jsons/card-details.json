@@ -1,0 +1,11 @@
+{   
+    "cardOne":{
+        "cardnumber": "4143258769012305",
+        "cardlogo": "https://cdn.flnf.hu/assets/visa.svg"
+    },
+    "cardTwo":{
+        "cardnumber": "5203148998046920",
+        "cardlogo": "https://cdn.flnf.hu/assets/mastercard.svg"
+    }
+  
+}
