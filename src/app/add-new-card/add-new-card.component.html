@@ -4,7 +4,7 @@
         <form [formGroup]="addCardForm" autocomplete="off">
             <mat-form-field appearance="standard" class="cardNum">
                 <mat-label>Enter Debit / Credit Card Number</mat-label>
-                <input matInput type="text" id="card-number" name="cardNum" formControlName="cardNumber" [(ngModel)]="cardNumber"
+                <input matInput appBlockcopypaste type="text" id="card-number" name="cardNum" formControlName="cardNumber" [(ngModel)]="cardNumber"
             [maxlength]="maxLength" (keyup)="validate()" [imask]="imask" [unmask]="true"/>
                <img class="icon-card" *ngIf="validationRes?.card" [src]="getIssuerIcon()">
                 <input type="hidden" formControlName="iconCard" [value]="iconName">
@@ -26,7 +26,7 @@
               </mat-form-field>
               <mat-form-field appearance="standard">
                 <mat-label>CVV</mat-label>
-                <input matInput type="password" id="cvv" name="cVV" formControlName="CVV" [minlength]="maxCvvLength" maxlength="4" (keypress)="numberOnly($event)"/>
+                <input matInput appBlockcopypaste type="password" id="cvv" name="cVV" formControlName="CVV" [minlength]="maxCvvLength" maxlength="4" (keypress)="numberOnly($event)"/>
               </mat-form-field>
             </div>
             <button mat-raised-button type="submit" color="primary" [disabled]="!addCardForm.valid || inValidCard" (click)="onAddCard()">Add Card</button>

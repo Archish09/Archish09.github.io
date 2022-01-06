@@ -19,6 +19,7 @@ import {IMaskModule} from 'angular-imask';
 import { CardDetailsService } from './card-details.service';
 import { NumberMaskingPipe } from './number-masking.pipe';
 import { DeleteCardComponent } from './delete-card/delete-card.component';
+import { BlockcopypasteDirective } from './blockcopypaste.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DeleteCardComponent } from './delete-card/delete-card.component';
     SavedCardsComponent,
     AddNewCardComponent,
     NumberMaskingPipe,
-    DeleteCardComponent
+    DeleteCardComponent,
+    BlockcopypasteDirective
   ],
   entryComponents: [AddNewCardComponent,DeleteCardComponent],
   imports: [ 
